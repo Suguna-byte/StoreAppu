@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fdf6e8;
+  --foreground: #2c1f14;
+
+  --kerala-green: #2f5233;
+  --kerala-green-light: #4f7942;
+  --kerala-green-dark: #1d3620;
+  --kerala-red: #a3312a;
+  --kerala-red-dark: #7a2420;
+  --kerala-yellow: #e0a72e;
+  --kerala-yellow-dark: #b9860f;
+  --kerala-cream: #fdf6e8;
+  --kerala-cream-dark: #f2e6c9;
+  --kerala-brown: #5c3a21;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-kerala-green: var(--kerala-green);
+  --color-kerala-green-light: var(--kerala-green-light);
+  --color-kerala-green-dark: var(--kerala-green-dark);
+  --color-kerala-red: var(--kerala-red);
+  --color-kerala-red-dark: var(--kerala-red-dark);
+  --color-kerala-yellow: var(--kerala-yellow);
+  --color-kerala-yellow-dark: var(--kerala-yellow-dark);
+  --color-kerala-cream: var(--kerala-cream);
+  --color-kerala-cream-dark: var(--kerala-cream-dark);
+  --color-kerala-brown: var(--kerala-brown);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-toast-in {
+  animation: toast-in 0.25s ease-out;
+}
+
+@keyframes iris-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-iris-spin {
+  animation: iris-spin 14s linear infinite;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+/* Scrollbar tuned to the earthy palette instead of default blue/grey */
+::selection {
+  background: var(--kerala-yellow);
+  color: var(--kerala-green-dark);
+}
+
+@layer components {
+  .input {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--kerala-green) 30%, transparent);
+    background: white;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.95rem;
+    color: var(--foreground);
+  }
+  .input:focus {
+    outline: none;
+    border-color: var(--kerala-green);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--kerala-green) 20%, transparent);
+  }
+}
