@@ -16,10 +16,14 @@ export default async function HomePage() {
 
   return (
     <div>
-      <section className="relative overflow-hidden bg-gradient-to-b from-kerala-cream-dark to-kerala-cream py-14">
+      <section className="relative overflow-hidden bg-gradient-to-b from-kerala-cream-dark to-kerala-cream py-14 lg:py-20">
         <KeralaPattern variant="leaves" />
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 lg:grid-cols-2">
-          <div>
+
+        {/* Text sits in a narrow ~30% column; the face art fills the remaining
+            ~70% of the section width and fades into the background at its
+            edges (see the mask on KathakaliHero) instead of a boxed graphic. */}
+        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-4 lg:grid-cols-[3fr_7fr]">
+          <div className="max-w-lg">
             <p className="mb-3 inline-block rounded-full bg-kerala-yellow/30 px-4 py-1 text-sm font-semibold text-kerala-brown">
               Viman Nagar, Pune
             </p>
@@ -45,7 +49,8 @@ export default async function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="animate-float-slow">
+
+          <div className="animate-float-slow mx-auto w-[85%] max-w-sm lg:w-full lg:max-w-none">
             <KathakaliHero />
           </div>
         </div>
