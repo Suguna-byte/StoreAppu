@@ -7,6 +7,7 @@ import BoatLogo from "./BoatLogo";
 import { useSession } from "@/lib/use-session";
 import { apiFetch } from "@/lib/api-client";
 import { CART_UPDATED_EVENT } from "@/lib/cart-events";
+import { MapPinIcon } from "@/components/icons/UiIcons";
 import type { Category, Cart } from "@/types";
 
 export default function Header({ categories }: { categories: Category[] }) {
@@ -48,81 +49,93 @@ export default function Header({ categories }: { categories: Category[] }) {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b-4 border-kerala-yellow bg-kerala-cream/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-        <BoatLogo />
+    <header className="sticky top-0 z-50 bg-kerala-cream/95 backdrop-blur-sm">
+      <div className="hidden bg-kerala-green-dark text-kerala-cream/85 sm:block">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-1.5 text-[12px]">
+          <span className="flex items-center gap-1.5">
+            <MapPinIcon className="h-3.5 w-3.5" />
+            Viman Nagar, Pune &middot; Open daily, 9am to 9pm
+          </span>
+          <span className="tracking-wide text-kerala-yellow/90">Free local delivery over &#8377;499</span>
+        </div>
+      </div>
 
-        <nav className="hidden items-center gap-5 lg:flex">
-          {categories.slice(0, 6).map((c) => (
-            <Link
-              key={c.slug}
-              href={`/category/${c.slug}`}
-              className="relative text-sm font-semibold text-kerala-brown transition-colors hover:text-kerala-red after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-kerala-red after:transition-all after:duration-300 hover:after:w-full"
-            >
-              {c.name}
-            </Link>
-          ))}
-        </nav>
+      <div className="border-b border-kerala-brown/15">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+          <BoatLogo />
 
-        <div className="flex items-center gap-3">
-          <Link
-            href="/cart"
-            aria-label="Cart"
-            className="relative rounded-full p-2 text-kerala-green-dark transition-colors hover:scale-110 hover:bg-kerala-green/10"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="9" cy="21" r="1" />
-              <circle cx="20" cy="21" r="1" />
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-            </svg>
-            {displayCartCount > 0 && (
-              <span
-                className={`absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-kerala-red px-1 text-[11px] font-bold text-kerala-cream ${
-                  cartBump ? "animate-pop" : ""
-                }`}
-              >
-                {displayCartCount}
-              </span>
-            )}
-          </Link>
-
-          {!loading && user ? (
-            <div className="hidden items-center gap-3 sm:flex">
-              {user.is_seller && (
-                <Link href="/seller" className="text-sm font-semibold text-kerala-green-dark hover:text-kerala-red">
-                  Seller
-                </Link>
-              )}
-              <Link href="/orders" className="text-sm font-semibold text-kerala-green-dark hover:text-kerala-red">
-                Orders
-              </Link>
-              <button
-                onClick={handleLogout}
-                className="rounded-full bg-kerala-green px-4 py-1.5 text-sm font-semibold text-kerala-cream transition hover:bg-kerala-green-dark"
-              >
-                Logout
-              </button>
-            </div>
-          ) : (
-            !loading && (
+          <nav className="hidden items-center gap-7 lg:flex">
+            {categories.slice(0, 6).map((c) => (
               <Link
-                href="/login"
-                className="hidden rounded-full bg-kerala-red px-4 py-1.5 text-sm font-semibold text-kerala-cream transition hover:bg-kerala-red-dark sm:block"
+                key={c.slug}
+                href={`/category/${c.slug}`}
+                className="relative text-[13px] font-semibold uppercase tracking-wide text-kerala-brown transition-colors hover:text-kerala-red after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-kerala-red after:transition-all after:duration-300 hover:after:w-full"
               >
-                Login
+                {c.name}
               </Link>
-            )
-          )}
+            ))}
+          </nav>
 
-          <button
-            aria-label="Toggle menu"
-            className="rounded p-2 lg:hidden"
-            onClick={() => setMenuOpen((v) => !v)}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M3 6h18M3 12h18M3 18h18" />
-            </svg>
-          </button>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/cart"
+              aria-label="Cart"
+              className="relative p-1 text-kerala-green-dark transition-colors hover:text-kerala-red"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              </svg>
+              {displayCartCount > 0 && (
+                <span
+                  className={`absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-kerala-red px-1 text-[11px] font-bold text-kerala-cream ${
+                    cartBump ? "animate-pop" : ""
+                  }`}
+                >
+                  {displayCartCount}
+                </span>
+              )}
+            </Link>
+
+            {!loading && user ? (
+              <div className="hidden items-center gap-4 sm:flex">
+                {user.is_seller && (
+                  <Link href="/seller" className="text-[13px] font-semibold uppercase tracking-wide text-kerala-green-dark hover:text-kerala-red">
+                    Seller
+                  </Link>
+                )}
+                <Link href="/orders" className="text-[13px] font-semibold uppercase tracking-wide text-kerala-green-dark hover:text-kerala-red">
+                  Orders
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="border border-kerala-green-dark px-4 py-1.5 text-[13px] font-semibold uppercase tracking-wide text-kerala-green-dark transition hover:bg-kerala-green-dark hover:text-kerala-cream"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              !loading && (
+                <Link
+                  href="/login"
+                  className="hidden bg-kerala-red px-4 py-1.5 text-[13px] font-semibold uppercase tracking-wide text-kerala-cream transition hover:bg-kerala-red-dark sm:block"
+                >
+                  Login
+                </Link>
+              )
+            )}
+
+            <button
+              aria-label="Toggle menu"
+              className="rounded p-2 lg:hidden"
+              onClick={() => setMenuOpen((v) => !v)}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                <path d="M3 6h18M3 12h18M3 18h18" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 

@@ -1,23 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fdf6e8;
-  --foreground: #2c1f14;
+  --background: #f6efdf;
+  --foreground: #241c12;
 
-  --kerala-green: #2f5233;
-  --kerala-green-light: #4f7942;
-  --kerala-green-dark: #1d3620;
-  --kerala-red: #a3312a;
-  --kerala-red-dark: #7a2420;
-  --kerala-yellow: #e0a72e;
-  --kerala-yellow-dark: #b9860f;
-  --kerala-cream: #fdf6e8;
-  --kerala-cream-dark: #eddcb5;
-  --kerala-brown: #5c3a21;
+  /* Deep backwater teal-green, terracotta (laterite brick) and antique
+     gold, instead of the brighter primary-color palette this started
+     with. Same token names throughout the app, deliberately re-tuned
+     hues, so this is a full re-skin without touching every component. */
+  --kerala-green: #244539;
+  --kerala-green-light: #4a7259;
+  --kerala-green-dark: #152e26;
+  --kerala-red: #af5330;
+  --kerala-red-dark: #863d21;
+  --kerala-yellow: #c8983e;
+  --kerala-yellow-dark: #9c7526;
+  --kerala-cream: #f6efdf;
+  --kerala-cream-dark: #e8d7ac;
+  --kerala-brown: #4a3520;
   /* Two extra section-tint tones so pages read as distinct bands instead of
-     one flat field — used for alternating section backgrounds sitewide. */
-  --kerala-sage: #e3ecd8;
-  --kerala-peach: #f5ddc0;
+     one flat field, used for alternating section backgrounds sitewide. */
+  --kerala-sage: #dde4cc;
+  --kerala-peach: #eed0aa;
 }
 
 @theme inline {
@@ -40,8 +44,8 @@
 }
 
 body {
-  /* A soft warm glow near the top of the document instead of one flat field
-     — still a plain gradient (no repeating pattern), giving every page a
+  /* A soft warm glow near the top of the document instead of one flat field,
+     still a plain gradient (no repeating pattern), giving every page a
      bit of depth. Scrolls with the page (no background-attachment: fixed)
      so it reads as "top of the page", not a viewport-locked glow. */
   background: radial-gradient(ellipse 140% 640px at 50% 0%, var(--kerala-cream-dark) 0%, var(--kerala-cream) 70%)
@@ -53,6 +57,17 @@ body {
 
 h1, h2, h3, h4, .font-display {
   font-family: var(--font-display), Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+/* Small hand-drawn-feeling divider used under section headings in place of
+   a plain colored bar, a nod to Kerala mural linework without being
+   literal about it. See components/KeralaFlourish.tsx. */
+.flourish-line {
+  stroke: var(--kerala-yellow);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
 }
 
 @keyframes toast-in {

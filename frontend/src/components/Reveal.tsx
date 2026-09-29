@@ -12,7 +12,7 @@ export default function Reveal({
   className = "",
 }: {
   children: React.ReactNode;
-  /** Stagger position within a grid/list — each step adds ~60ms of delay. */
+  /** Stagger position within a grid/list, each step adds ~60ms of delay. */
   index?: number;
   className?: string;
 }) {

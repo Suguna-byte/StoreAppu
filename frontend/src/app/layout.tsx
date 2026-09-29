@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cinzel, Manrope } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -14,9 +14,10 @@ const body = Manrope({
   display: "swap",
 });
 
-const display = Cinzel({
+const display = Fraunces({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | Appu's Kerala Store",
   },
   description:
-    "Authentic Kerala groceries, spices, snacks and clothing — coconut oil, banana chips, kasavu mundu and more — delivered across Viman Nagar, Pune.",
+    "Authentic Kerala groceries, spices, snacks and clothing: coconut oil, banana chips, kasavu mundu and more, delivered across Viman Nagar, Pune.",
   keywords: [
     "Kerala store Pune",
     "Viman Nagar grocery",

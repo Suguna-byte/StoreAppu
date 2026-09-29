@@ -52,7 +52,7 @@ export default function OrdersPage() {
       ) : (
         <ul className="mt-6 space-y-4">
           {orders.map((order) => (
-            <li key={order.id} className="rounded-2xl border border-kerala-yellow/30 bg-white p-5">
+            <li key={order.id} className="rounded-lg border border-kerala-brown/10 bg-white p-5">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="font-display font-bold text-kerala-brown">Order #{order.id}</span>
                 <span className={`rounded-full px-3 py-1 text-xs font-bold uppercase ${STATUS_STYLES[order.status]}`}>
@@ -65,7 +65,7 @@ export default function OrdersPage() {
               <ul className="mt-3 space-y-1 text-sm text-kerala-brown/80">
                 {order.items.map((item) => (
                   <li key={item.id}>
-                    {item.quantity} × {item.product_name} — ₹{item.subtotal}
+                    {item.quantity} × {item.product_name}: ₹{item.subtotal}
                   </li>
                 ))}
               </ul>

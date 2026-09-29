@@ -1,7 +1,7 @@
 /**
  * Server-only helper for public, unauthenticated reads (catalog, categories).
  * Called from Server Components so it can talk to Django directly over the
- * network without going through the browser — no CORS involved.
+ * network without going through the browser, no CORS involved.
  */
 const DJANGO_API_URL = process.env.DJANGO_API_URL || "http://127.0.0.1:8000";
 

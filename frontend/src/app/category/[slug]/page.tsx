@@ -26,7 +26,7 @@ export async function generateMetadata({
   const category = await getCategory(slug);
   if (!category) return { title: "Category not found" };
   return {
-    title: `${category.name} — Shop Online`,
+    title: `${category.name}: Shop Online`,
     description:
       category.description ||
       `Browse ${category.name} at Appu's Kerala Store, Viman Nagar, Pune. ${category.product_count} products available.`,
@@ -58,7 +58,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
           ))}
         </div>
       ) : (
-        <p className="mt-8 text-kerala-brown/70">No products in this category yet — check back soon!</p>
+        <p className="mt-8 text-kerala-brown/70">No products in this category yet. Check back soon!</p>
       )}
     </div>
   );

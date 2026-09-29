@@ -67,7 +67,7 @@ export default function CheckoutPage() {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         setAddress((a) => ({ ...a, latitude: pos.coords.latitude, longitude: pos.coords.longitude }));
-        toast.success("Location captured — please confirm your full address below.");
+        toast.success("Location captured. Please confirm your full address below.");
         setLocating(false);
       },
       () => {
@@ -154,7 +154,7 @@ export default function CheckoutPage() {
     <div className="mx-auto max-w-2xl px-4 py-10">
       <h1 className="font-display text-3xl font-bold text-kerala-green-dark">Checkout</h1>
 
-      <div className="mt-6 rounded-2xl border border-kerala-yellow/30 bg-white p-5">
+      <div className="mt-6 rounded-lg border border-kerala-brown/10 bg-white p-5">
         <div className="flex items-center justify-between font-display text-lg font-bold text-kerala-brown">
           <span>Order total</span>
           <span>₹{cart.total}</span>
@@ -167,7 +167,7 @@ export default function CheckoutPage() {
           e.preventDefault();
           handlePay();
         }}
-        className="mt-6 space-y-4 rounded-2xl border border-kerala-yellow/30 bg-white p-5"
+        className="mt-6 space-y-4 rounded-lg border border-kerala-brown/10 bg-white p-5"
       >
         <h2 className="font-display text-lg font-bold text-kerala-brown">Delivery Address</h2>
 
@@ -175,7 +175,7 @@ export default function CheckoutPage() {
           type="button"
           onClick={handleUseLocation}
           disabled={locating}
-          className="flex items-center gap-2 rounded-full border border-kerala-green px-4 py-2 text-sm font-semibold text-kerala-green-dark hover:bg-kerala-green/10"
+          className="flex items-center gap-2 rounded-sm border border-kerala-green px-4 py-2 text-sm font-semibold text-kerala-green-dark hover:bg-kerala-green/10"
         >
           <MapPinIcon className="h-4 w-4" />
           {locating ? "Locating…" : "Use my current location"}
@@ -253,7 +253,7 @@ export default function CheckoutPage() {
         <button
           type="submit"
           disabled={submitting}
-          className="w-full rounded-full bg-kerala-red py-3 font-semibold text-kerala-cream shadow transition hover:bg-kerala-red-dark disabled:opacity-60"
+          className="w-full rounded-sm bg-kerala-red py-3 font-semibold text-kerala-cream shadow transition hover:bg-kerala-red-dark disabled:opacity-60"
         >
           {submitting ? "Processing…" : `Pay ₹${cart.total} with Razorpay`}
         </button>

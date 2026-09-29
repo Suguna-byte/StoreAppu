@@ -1,5 +1,5 @@
-/** Small stroke-based utility icons — consistent 24x24 style with the icons
- * already used in Header.tsx — replacing emoji glyphs used as placeholders. */
+/** Small stroke-based utility icons, consistent 24x24 style with the icons
+ * already used in Header.tsx, replacing emoji glyphs used as placeholders. */
 import type { SVGProps } from "react";
 
 type IconProps = SVGProps<SVGSVGElement>;

@@ -49,7 +49,7 @@ export default function AddToCartButton({
     <button
       onClick={handleAdd}
       disabled={disabled || loading}
-      className={`inline-flex items-center justify-center gap-1.5 rounded-full bg-kerala-green px-4 py-2 text-sm font-semibold text-kerala-cream transition hover:bg-kerala-green-dark active:scale-95 disabled:cursor-not-allowed disabled:bg-kerala-brown/40 ${
+      className={`inline-flex items-center justify-center gap-1.5 rounded-sm bg-kerala-green px-4 py-2 text-sm font-semibold text-kerala-cream transition hover:bg-kerala-green-dark active:scale-95 disabled:cursor-not-allowed disabled:bg-kerala-brown/40 ${
         justAdded ? "animate-pop" : ""
       } ${className}`}
     >

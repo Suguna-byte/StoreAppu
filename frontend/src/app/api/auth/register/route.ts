@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
   const loginData = await loginRes.json().catch(() => ({}));
 
   if (!loginRes.ok) {
-    // Account created but auto-login failed for some reason — still a success for the user.
+    // Account created but auto-login failed for some reason, still a success for the user.
     return NextResponse.json({ ok: true, autoLogin: false });
   }
 

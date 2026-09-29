@@ -26,7 +26,7 @@ export function useSession() {
     // layout, so a client-side navigation after login/logout wouldn't otherwise
     // remount it or refetch the session.
     // refresh() only sets state after its internal `await`, so this doesn't
-    // cause a synchronous cascading render — it's the standard fetch-on-mount pattern.
+    // cause a synchronous cascading render; it's the standard fetch-on-mount pattern.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     refresh();
   }, [refresh, pathname]);

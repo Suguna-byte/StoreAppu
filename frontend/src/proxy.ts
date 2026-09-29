@@ -5,7 +5,7 @@ const PROTECTED_PREFIXES = ["/checkout", "/orders", "/seller"];
 
 /**
  * Optimistic auth gate: redirects to /login when neither auth cookie is
- * present. This is a fast, request-data-only check — the real authorization
+ * present. This is a fast, request-data-only check; the real authorization
  * (e.g. is_seller) is always re-verified by Django on every API call.
  */
 export function proxy(request: NextRequest) {

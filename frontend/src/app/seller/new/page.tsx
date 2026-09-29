@@ -101,7 +101,7 @@ export default function NewProductPage() {
     <SellerShell>
       <h2 className="font-display text-xl font-bold text-kerala-brown">Add a Product</h2>
       <p className="mt-1 text-sm text-kerala-brown/70">
-        Fill in the details below — customers will see this exactly as it appears in the preview.
+        Fill in the details below. Customers will see this exactly as it appears in the preview.
       </p>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
@@ -191,7 +191,7 @@ export default function NewProductPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full rounded-full bg-kerala-green py-3 font-semibold text-kerala-cream transition hover:bg-kerala-green-dark disabled:opacity-60"
+            className="w-full rounded-sm bg-kerala-green py-3 font-semibold text-kerala-cream transition hover:bg-kerala-green-dark disabled:opacity-60"
           >
             {submitting ? "Saving…" : "Add Product"}
           </button>

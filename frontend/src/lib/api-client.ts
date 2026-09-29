@@ -26,7 +26,7 @@ function firstErrorMessage(data: unknown): string | null {
 }
 
 /** All authenticated browser requests go through our own /api/proxy route,
- * which attaches the JWT server-side — the browser never sees the token. */
+ * which attaches the JWT server-side; the browser never sees the token. */
 export async function apiFetch<T = unknown>(path: string, init: RequestInit = {}): Promise<T> {
   const isFormData = init.body instanceof FormData;
   const res = await fetch(`/api/proxy${path}`, {

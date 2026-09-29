@@ -1,5 +1,5 @@
 /**
- * Hand-drawn flat illustrations for each product category — real vector
+ * Hand-drawn flat illustrations for each product category, real vector
  * images, not emoji glyphs. Each fills a 200x200 tile with a tinted circular
  * backdrop in its own accent color, matching the earthy site palette.
  */

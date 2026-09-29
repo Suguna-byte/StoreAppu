@@ -70,7 +70,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </nav>
 
       <div className="grid gap-10 md:grid-cols-2">
-        <div className="relative aspect-square overflow-hidden rounded-2xl border border-kerala-yellow/30 bg-kerala-cream-dark">
+        <div className="relative aspect-square overflow-hidden rounded-lg border border-kerala-brown/10 bg-kerala-cream-dark">
           {primaryImage ? (
             <Image src={primaryImage.image} alt={primaryImage.alt_text || product.name} fill className="object-cover" />
           ) : (

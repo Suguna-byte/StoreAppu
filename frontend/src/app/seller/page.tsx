@@ -140,7 +140,7 @@ export default function SellerDashboard() {
         />
         <Link
           href="/seller/new"
-          className="rounded-full bg-kerala-red px-5 py-2 font-semibold text-kerala-cream transition hover:bg-kerala-red-dark"
+          className="rounded-sm bg-kerala-red px-5 py-2 font-semibold text-kerala-cream transition hover:bg-kerala-red-dark"
         >
           + Add Product
         </Link>
@@ -151,7 +151,7 @@ export default function SellerDashboard() {
           <p className="text-kerala-brown/70">You haven&apos;t listed any products yet.</p>
           <Link
             href="/seller/new"
-            className="mt-4 inline-block rounded-full bg-kerala-green px-5 py-2 font-semibold text-kerala-cream hover:bg-kerala-green-dark"
+            className="mt-4 inline-block rounded-sm bg-kerala-green px-5 py-2 font-semibold text-kerala-cream hover:bg-kerala-green-dark"
           >
             List your first product
           </Link>

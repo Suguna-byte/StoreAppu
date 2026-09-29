@@ -59,7 +59,7 @@ export default function CartPage() {
     return (
       <div className="mx-auto max-w-md px-4 py-20 text-center">
         <p className="text-kerala-brown">Please log in to view your cart.</p>
-        <Link href="/login" className="mt-4 inline-block rounded-full bg-kerala-red px-6 py-2 font-semibold text-kerala-cream">
+        <Link href="/login" className="mt-4 inline-block rounded-sm bg-kerala-red px-6 py-2 font-semibold text-kerala-cream">
           Log in
         </Link>
       </div>
@@ -123,7 +123,7 @@ export default function CartPage() {
 
           <button
             onClick={() => router.push("/checkout")}
-            className="mt-6 w-full rounded-full bg-kerala-red py-3 font-semibold text-kerala-cream shadow transition hover:bg-kerala-red-dark"
+            className="mt-6 w-full rounded-sm bg-kerala-red py-3 font-semibold text-kerala-cream shadow transition hover:bg-kerala-red-dark"
           >
             Proceed to Checkout
           </button>
