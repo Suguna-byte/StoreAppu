@@ -11,9 +11,18 @@ class ProductImageInline(admin.TabularInline):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ["name", "slug", "order", "product_count"]
+    list_display = ["thumbnail", "name", "slug", "order", "product_count"]
     prepopulated_fields = {"slug": ("name",)}
     search_fields = ["name"]
+
+    @admin.display(description="Image")
+    def thumbnail(self, obj):
+        if not obj.image:
+            return "—"
+        return format_html(
+            '<img src="{}" style="width:44px;height:44px;object-fit:cover;border-radius:6px;" />',
+            obj.image.url,
+        )
 
     @admin.display(description="Products")
     def product_count(self, obj):

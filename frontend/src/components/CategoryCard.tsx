@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Category } from "@/types";
 import { CATEGORY_ILLUSTRATIONS, ClothingIllustration } from "@/components/icons/CategoryIllustrations";
@@ -11,7 +12,16 @@ export default function CategoryCard({ category }: { category: Category }) {
       className="group overflow-hidden rounded-3xl border border-kerala-yellow/30 bg-white shadow-sm transition hover:-translate-y-1.5 hover:shadow-xl"
     >
       <div className="relative aspect-square overflow-hidden">
-        <Illustration className="h-full w-full transition-transform duration-500 group-hover:scale-110" />
+        {category.image ? (
+          <Image
+            src={category.image}
+            alt={category.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        ) : (
+          <Illustration className="h-full w-full transition-transform duration-500 group-hover:scale-110" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
       </div>
       <div className="flex items-center justify-between px-4 py-3">

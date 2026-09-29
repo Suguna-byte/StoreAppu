@@ -5,11 +5,19 @@ from .models import Category, Product, ProductImage
 
 class CategorySerializer(serializers.ModelSerializer):
     product_count = serializers.IntegerField(read_only=True)
+    image = serializers.SerializerMethodField()
 
     class Meta:
         model = Category
-        fields = ["id", "name", "slug", "description", "icon", "order", "product_count"]
+        fields = ["id", "name", "slug", "description", "icon", "image", "order", "product_count"]
         read_only_fields = ["slug"]
+
+    def get_image(self, obj):
+        if not obj.image:
+            return None
+        request = self.context.get("request")
+        url = obj.image.url
+        return request.build_absolute_uri(url) if request else url
 
 
 class ProductImageSerializer(serializers.ModelSerializer):

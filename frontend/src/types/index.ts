@@ -4,6 +4,7 @@ export interface Category {
   slug: string;
   description: string;
   icon: string;
+  image: string | null;
   order: number;
   product_count: number;
 }

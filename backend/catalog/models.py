@@ -8,6 +8,7 @@ class Category(models.Model):
     slug = models.SlugField(max_length=120, unique=True, blank=True)
     description = models.TextField(blank=True)
     icon = models.CharField(max_length=50, blank=True, help_text="Emoji or icon key for the UI")
+    image = models.ImageField(upload_to="categories/", blank=True, null=True)
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
