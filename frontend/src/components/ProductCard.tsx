@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ProductListItem } from "@/types";
 import AddToCartButton from "./AddToCartButton";
+import { PackageIcon } from "@/components/icons/UiIcons";
 
 const UNIT_LABELS: Record<string, string> = {
   pc: "piece",
@@ -25,7 +26,9 @@ export default function ProductCard({ product }: { product: ProductListItem }) {
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-4xl">🥥</div>
+          <div className="flex h-full w-full items-center justify-center text-kerala-brown/30">
+            <PackageIcon className="h-10 w-10" />
+          </div>
         )}
         {!product.in_stock && (
           <span className="absolute left-2 top-2 rounded-full bg-kerala-red px-2 py-0.5 text-xs font-bold text-kerala-cream">

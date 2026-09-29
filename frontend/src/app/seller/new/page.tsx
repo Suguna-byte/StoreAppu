@@ -7,6 +7,7 @@ import { apiFetch } from "@/lib/api-client";
 import { useSession } from "@/lib/use-session";
 import { useToast } from "@/components/ToastProvider";
 import SellerShell from "@/components/SellerShell";
+import { PackageIcon } from "@/components/icons/UiIcons";
 import type { Category, ProductDetail } from "@/types";
 
 const UNITS = [
@@ -203,7 +204,9 @@ export default function NewProductPage() {
               {imagePreviewUrl ? (
                 <Image src={imagePreviewUrl} alt="Product preview" fill className="object-cover" unoptimized />
               ) : (
-                <div className="flex h-full w-full items-center justify-center text-4xl">🥥</div>
+                <div className="flex h-full w-full items-center justify-center text-kerala-brown/30">
+                  <PackageIcon className="h-10 w-10" />
+                </div>
               )}
             </div>
             <div className="p-3">

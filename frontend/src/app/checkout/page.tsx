@@ -7,6 +7,7 @@ import { apiFetch } from "@/lib/api-client";
 import { loadRazorpayScript } from "@/lib/load-razorpay";
 import { useSession } from "@/lib/use-session";
 import { useToast } from "@/components/ToastProvider";
+import { MapPinIcon } from "@/components/icons/UiIcons";
 import type { Cart, DeliveryAddress, Order } from "@/types";
 
 interface RazorpayOrderInfo {
@@ -176,7 +177,8 @@ export default function CheckoutPage() {
           disabled={locating}
           className="flex items-center gap-2 rounded-full border border-kerala-green px-4 py-2 text-sm font-semibold text-kerala-green-dark hover:bg-kerala-green/10"
         >
-          📍 {locating ? "Locating…" : "Use my current location"}
+          <MapPinIcon className="h-4 w-4" />
+          {locating ? "Locating…" : "Use my current location"}
         </button>
         {address.latitude && (
           <p className="text-xs text-kerala-green">

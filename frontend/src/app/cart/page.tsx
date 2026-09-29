@@ -8,6 +8,7 @@ import { apiFetch } from "@/lib/api-client";
 import { useSession } from "@/lib/use-session";
 import { useToast } from "@/components/ToastProvider";
 import QuantityStepper from "@/components/QuantityStepper";
+import { CloseIcon, PackageIcon } from "@/components/icons/UiIcons";
 import type { Cart } from "@/types";
 
 export default function CartPage() {
@@ -84,7 +85,9 @@ export default function CartPage() {
                   {item.product.primary_image ? (
                     <Image src={item.product.primary_image} alt={item.product.name} fill className="object-cover" />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center text-2xl">🥥</div>
+                    <div className="flex h-full w-full items-center justify-center text-kerala-brown/30">
+                      <PackageIcon className="h-6 w-6" />
+                    </div>
                   )}
                 </div>
                 <div className="flex-1">
@@ -104,7 +107,7 @@ export default function CartPage() {
                   aria-label="Remove item"
                   className="text-kerala-red/70 hover:text-kerala-red"
                 >
-                  ✕
+                  <CloseIcon className="h-4 w-4" />
                 </button>
               </li>
             ))}

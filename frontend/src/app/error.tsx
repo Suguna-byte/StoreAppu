@@ -1,9 +1,11 @@
 "use client";
 
+import { PackageIcon } from "@/components/icons/UiIcons";
+
 export default function GlobalError({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
   return (
     <div className="mx-auto flex min-h-[60vh] max-w-md flex-col items-center justify-center px-4 text-center">
-      <span className="text-5xl">🥥</span>
+      <PackageIcon className="h-14 w-14 text-kerala-red/70" />
       <h1 className="mt-4 font-display text-2xl font-bold text-kerala-brown">Something went wrong</h1>
       <p className="mt-2 text-kerala-brown/70">
         We couldn&apos;t load this page right now. Please try again in a moment.

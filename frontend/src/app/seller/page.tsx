@@ -8,6 +8,7 @@ import { apiFetch } from "@/lib/api-client";
 import { useSession } from "@/lib/use-session";
 import { useToast } from "@/components/ToastProvider";
 import SellerShell from "@/components/SellerShell";
+import { PackageIcon } from "@/components/icons/UiIcons";
 import type { Paginated, ProductListItem } from "@/types";
 
 const LOW_STOCK_THRESHOLD = 10;
@@ -168,7 +169,9 @@ export default function SellerDashboard() {
                 {p.primary_image ? (
                   <Image src={p.primary_image} alt={p.name} fill className="object-cover" />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center text-2xl">🥥</div>
+                  <div className="flex h-full w-full items-center justify-center text-kerala-brown/30">
+                    <PackageIcon className="h-6 w-6" />
+                  </div>
                 )}
               </div>
 

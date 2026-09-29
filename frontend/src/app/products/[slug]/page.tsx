@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AddToCartButton from "@/components/AddToCartButton";
+import { PackageIcon } from "@/components/icons/UiIcons";
 import { DjangoApiError, fetchPublic } from "@/lib/django";
 import type { ProductDetail } from "@/types";
 
@@ -73,7 +74,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           {primaryImage ? (
             <Image src={primaryImage.image} alt={primaryImage.alt_text || product.name} fill className="object-cover" />
           ) : (
-            <div className="flex h-full w-full items-center justify-center text-7xl">🥥</div>
+            <div className="flex h-full w-full items-center justify-center text-kerala-brown/30">
+              <PackageIcon className="h-20 w-20" />
+            </div>
           )}
         </div>
 

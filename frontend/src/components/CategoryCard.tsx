@@ -1,29 +1,27 @@
 import Link from "next/link";
 import type { Category } from "@/types";
-
-const ICONS: Record<string, string> = {
-  grocery: "🌾",
-  oil: "🥥",
-  snack: "🍌",
-  spice: "🌶️",
-  kerala: "🎊",
-  cloth: "👘",
-  home: "🏺",
-};
+import { CATEGORY_ILLUSTRATIONS, ClothingIllustration } from "@/components/icons/CategoryIllustrations";
 
 export default function CategoryCard({ category }: { category: Category }) {
+  const Illustration = CATEGORY_ILLUSTRATIONS[category.icon] || ClothingIllustration;
+
   return (
     <Link
       href={`/category/${category.slug}`}
-      className="group flex flex-col items-center gap-2 rounded-2xl border border-kerala-yellow/40 bg-white/70 p-4 text-center shadow-sm transition hover:-translate-y-1 hover:border-kerala-yellow hover:shadow-md"
+      className="group overflow-hidden rounded-3xl border border-kerala-yellow/30 bg-white/70 shadow-sm transition hover:-translate-y-1.5 hover:shadow-xl"
     >
-      <span className="text-4xl transition-transform group-hover:scale-110">
-        {ICONS[category.icon] || "🛍️"}
-      </span>
-      <span className="font-display text-sm font-semibold text-kerala-brown group-hover:text-kerala-red">
-        {category.name}
-      </span>
-      <span className="text-xs text-kerala-green">{category.product_count} items</span>
+      <div className="relative aspect-square overflow-hidden">
+        <Illustration className="h-full w-full transition-transform duration-500 group-hover:scale-110" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
+      </div>
+      <div className="flex items-center justify-between px-4 py-3">
+        <span className="font-display text-sm font-semibold text-kerala-brown group-hover:text-kerala-red">
+          {category.name}
+        </span>
+        <span className="rounded-full bg-kerala-green/10 px-2.5 py-0.5 text-xs font-semibold text-kerala-green-dark">
+          {category.product_count}
+        </span>
+      </div>
     </Link>
   );
 }
