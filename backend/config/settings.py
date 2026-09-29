@@ -14,6 +14,7 @@ DEBUG = config("DEBUG", default=False, cast=bool)
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="localhost,127.0.0.1", cast=Csv())
 
 INSTALLED_APPS = [
+    "jazzmin",  # must come before django.contrib.admin
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -96,6 +97,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [BASE_DIR / "static"]
 STORAGES = {
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
 }
@@ -161,3 +163,84 @@ STORE_CITY = "Viman Nagar, Pune"
 FREE_DELIVERY_RADIUS_KM = config("FREE_DELIVERY_RADIUS_KM", default=8, cast=int)
 STORE_LAT = config("STORE_LAT", default=18.5679, cast=float)
 STORE_LNG = config("STORE_LNG", default=73.9143, cast=float)
+
+# --- Admin theme (django-jazzmin) ---
+# Earthy palette matching the storefront (green/red/yellow, no neon).
+JAZZMIN_SETTINGS = {
+    "site_title": "Appu's Kerala Store Admin",
+    "site_header": "Appu's Kerala Store",
+    "site_brand": "Appu's Kerala Store",
+    "site_logo": "admin/logo.png",
+    "login_logo": "admin/logo.png",
+    "site_logo_classes": "img-circle",
+    "site_icon": "admin/logo.png",
+    "welcome_sign": "Welcome to Appu's Kerala Store admin",
+    "copyright": "Appu's Kerala Store",
+    "search_model": ["catalog.Product", "orders.Order", "accounts.User"],
+    "user_avatar": None,
+    "topmenu_links": [
+        {"name": "View Store", "url": "http://localhost:3000", "new_window": True},
+        {"model": "catalog.Product"},
+        {"model": "orders.Order"},
+    ],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "order_with_respect_to": [
+        "accounts",
+        "catalog",
+        "cart",
+        "orders",
+        "payments",
+        "auth",
+    ],
+    "icons": {
+        "accounts.User": "fas fa-user",
+        "auth.Group": "fas fa-users-cog",
+        "catalog.Category": "fas fa-th-large",
+        "catalog.Product": "fas fa-box-open",
+        "catalog.ProductImage": "fas fa-image",
+        "cart.Cart": "fas fa-shopping-cart",
+        "cart.CartItem": "fas fa-shopping-basket",
+        "orders.Order": "fas fa-receipt",
+        "orders.OrderItem": "fas fa-list",
+        "orders.DeliveryAddress": "fas fa-map-marker-alt",
+        "payments.PaymentEvent": "fas fa-rupee-sign",
+    },
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+    "related_modal_active": True,
+    "custom_css": "admin/jazzmin-theme.css",
+    "show_ui_builder": False,
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": "navbar-success",
+    "accent": "accent-success",
+    "navbar": "navbar-dark",
+    "no_navbar_border": False,
+    "navbar_fixed": True,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": True,
+    "sidebar": "sidebar-dark-success",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": True,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "flatly",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-success",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success",
+    },
+}

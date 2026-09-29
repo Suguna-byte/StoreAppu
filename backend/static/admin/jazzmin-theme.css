@@ -1,0 +1,68 @@
+/* Nudges Jazzmin's Bootstrap "success" theme toward Appu's Kerala Store's
+   actual earthy palette (green/red/yellow, no neon) instead of stock
+   Bootstrap green. */
+:root {
+  --kerala-green: #2f5233;
+  --kerala-green-dark: #1d3620;
+  --kerala-red: #a3312a;
+  --kerala-yellow: #e0a72e;
+  --kerala-cream: #fdf6e8;
+}
+
+.main-header.navbar,
+.main-sidebar,
+.brand-link {
+  background-color: var(--kerala-green-dark) !important;
+  border-color: var(--kerala-green) !important;
+}
+
+.sidebar-dark-success .nav-sidebar > .nav-item > .nav-link.active,
+.btn-success,
+.badge-success {
+  background-color: var(--kerala-green) !important;
+  border-color: var(--kerala-green) !important;
+}
+
+.btn-success:hover {
+  background-color: var(--kerala-green-dark) !important;
+  border-color: var(--kerala-green-dark) !important;
+}
+
+a,
+.nav-sidebar > .nav-item > .nav-link:hover {
+  color: var(--kerala-green) !important;
+}
+
+.btn-danger,
+.badge-danger {
+  background-color: var(--kerala-red) !important;
+  border-color: var(--kerala-red) !important;
+}
+
+.btn-warning,
+.badge-warning {
+  background-color: var(--kerala-yellow) !important;
+  border-color: var(--kerala-yellow) !important;
+  color: var(--kerala-green-dark) !important;
+}
+
+.small-box,
+.card {
+  border-radius: 0.5rem;
+}
+
+.login-page,
+.register-page {
+  background: linear-gradient(180deg, var(--kerala-green-dark), var(--kerala-green)) !important;
+}
+
+.login-box .card,
+.register-box .card {
+  border-top: 4px solid var(--kerala-yellow);
+}
+
+.brand-image {
+  object-fit: contain;
+  background: var(--kerala-cream);
+  border-radius: 50%;
+}
