@@ -54,7 +54,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section id="categories" className="bg-kerala-cream-dark/40 py-16">
+      <section id="categories" className="bg-kerala-peach py-16">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-center">
             <h2 className="font-display text-3xl font-bold text-kerala-green-dark">Shop by Category</h2>
@@ -74,7 +74,7 @@ export default async function HomePage() {
       </section>
 
       {featured.length > 0 && (
-        <section className="relative bg-kerala-green/5 py-14">
+        <section className="relative bg-kerala-sage py-14">
           <div className="mx-auto max-w-6xl px-4">
             <h2 className="font-display text-2xl font-bold text-kerala-green-dark">Featured Products</h2>
             <p className="mt-1 text-kerala-brown/80">Fresh picks from Appu&apos;s shelves this week.</p>
@@ -90,7 +90,7 @@ export default async function HomePage() {
       )}
 
       <section className="mx-auto max-w-6xl px-4 py-14">
-        <div className="grid gap-6 rounded-3xl border border-kerala-yellow/40 bg-white/70 p-8 sm:grid-cols-3">
+        <div className="grid gap-6 rounded-3xl border border-kerala-yellow/40 bg-white p-8 shadow-sm sm:grid-cols-3">
           <Reveal index={0}>
             <Feature icon={TruckIcon} title="Local delivery" text="Fast doorstep delivery across Viman Nagar and nearby Pune." />
           </Reveal>

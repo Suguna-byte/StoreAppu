@@ -18,7 +18,7 @@ function Tile({ bg, children, ...props }: { bg: string } & IconProps) {
 
 export function ClothingIllustration(props: IconProps) {
   return (
-    <Tile bg="#f3e2d3" {...props}>
+    <Tile bg="#e8c9a3" {...props}>
       <path d="M55 60 Q100 40 145 60 L138 150 Q100 165 62 150 Z" fill="#fdf6e8" stroke="#5c3a21" strokeWidth="2" />
       <path d="M55 60 Q100 40 145 60 L142 78 Q100 60 58 78 Z" fill="#e0a72e" />
       <path d="M62 150 Q100 165 138 150 L136 138 Q100 152 64 138 Z" fill="#e0a72e" />
@@ -30,7 +30,7 @@ export function ClothingIllustration(props: IconProps) {
 
 export function GroceriesIllustration(props: IconProps) {
   return (
-    <Tile bg="#f3e6b8" {...props}>
+    <Tile bg="#e8d183" {...props}>
       <path
         d="M75 75 C 75 60 125 60 125 75 L132 145 C 132 158 68 158 68 145 Z"
         fill="#c9a05e"
@@ -48,7 +48,7 @@ export function GroceriesIllustration(props: IconProps) {
 
 export function HomeEssentialsIllustration(props: IconProps) {
   return (
-    <Tile bg="#e8ddc8" {...props}>
+    <Tile bg="#d3c19c" {...props}>
       <path
         d="M60 95 C 60 130 75 150 100 150 C 125 150 140 130 140 95 Z"
         fill="#b9860f"
@@ -81,7 +81,7 @@ export function KeralaSpecialsIllustration(props: IconProps) {
     );
   });
   return (
-    <Tile bg="#f6d9b0" {...props}>
+    <Tile bg="#edc27e" {...props}>
       {petals}
       <circle cx="100" cy="100" r="22" fill="#2f5233" stroke="#e0a72e" strokeWidth="3" />
       <circle cx="100" cy="100" r="10" fill="#e0a72e" />
@@ -91,7 +91,7 @@ export function KeralaSpecialsIllustration(props: IconProps) {
 
 export function OilsGheeIllustration(props: IconProps) {
   return (
-    <Tile bg="#e4e6c9" {...props}>
+    <Tile bg="#cdd39c" {...props}>
       <path
         d="M85 70 L115 70 L120 85 C 138 95 140 160 100 160 C 60 160 62 95 80 85 Z"
         fill="#b9860f"
@@ -114,7 +114,7 @@ export function OilsGheeIllustration(props: IconProps) {
 
 export function SnacksChipsIllustration(props: IconProps) {
   return (
-    <Tile bg="#f3d9a0" {...props}>
+    <Tile bg="#e8b769" {...props}>
       <path
         d="M55 110 C 55 90 145 90 145 110 L138 145 C 138 155 62 155 62 145 Z"
         fill="#a3312a"
@@ -132,7 +132,7 @@ export function SnacksChipsIllustration(props: IconProps) {
 
 export function SpicesMasalaIllustration(props: IconProps) {
   return (
-    <Tile bg="#f0c9b8" {...props}>
+    <Tile bg="#e0a688" {...props}>
       <path
         d="M65 110 C 65 130 75 145 100 145 C 125 145 135 130 135 110 Z"
         fill="#8a6a3a"

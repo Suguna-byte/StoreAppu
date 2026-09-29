@@ -76,6 +76,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className={`${body.variable} ${display.variable} antialiased`}>
+        {/* Scroll-reveal animations rely on JS; without it, .reveal elements
+            would stay at opacity:0 forever, hiding real content (bad for
+            no-JS users and non-JS-executing crawlers). */}
+        <noscript>
+          <style>{`.reveal { opacity: 1 !important; transform: none !important; }`}</style>
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

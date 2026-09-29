@@ -105,7 +105,7 @@ export default function NewProductPage() {
       </p>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-        <form onSubmit={handleSubmit} className="space-y-4 rounded-2xl border border-kerala-yellow/30 bg-white/70 p-6">
+        <form onSubmit={handleSubmit} className="space-y-4 rounded-2xl border border-kerala-yellow/30 bg-white p-6">
           <label className="block">
             <span className="mb-1 block text-sm font-semibold text-kerala-brown">Product name</span>
             <input
@@ -199,7 +199,7 @@ export default function NewProductPage() {
 
         <div>
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-kerala-brown/60">Live preview</p>
-          <div className="overflow-hidden rounded-2xl border border-kerala-yellow/30 bg-white/70 shadow-sm">
+          <div className="overflow-hidden rounded-2xl border border-kerala-yellow/30 bg-white shadow-sm">
             <div className="relative aspect-square bg-kerala-cream-dark">
               {imagePreviewUrl ? (
                 <Image src={imagePreviewUrl} alt="Product preview" fill className="object-cover" unoptimized />

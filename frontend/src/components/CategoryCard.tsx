@@ -8,7 +8,7 @@ export default function CategoryCard({ category }: { category: Category }) {
   return (
     <Link
       href={`/category/${category.slug}`}
-      className="group overflow-hidden rounded-3xl border border-kerala-yellow/30 bg-white/70 shadow-sm transition hover:-translate-y-1.5 hover:shadow-xl"
+      className="group overflow-hidden rounded-3xl border border-kerala-yellow/30 bg-white shadow-sm transition hover:-translate-y-1.5 hover:shadow-xl"
     >
       <div className="relative aspect-square overflow-hidden">
         <Illustration className="h-full w-full transition-transform duration-500 group-hover:scale-110" />

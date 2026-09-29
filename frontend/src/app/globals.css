@@ -12,8 +12,12 @@
   --kerala-yellow: #e0a72e;
   --kerala-yellow-dark: #b9860f;
   --kerala-cream: #fdf6e8;
-  --kerala-cream-dark: #f2e6c9;
+  --kerala-cream-dark: #eddcb5;
   --kerala-brown: #5c3a21;
+  /* Two extra section-tint tones so pages read as distinct bands instead of
+     one flat field — used for alternating section backgrounds sitewide. */
+  --kerala-sage: #e3ecd8;
+  --kerala-peach: #f5ddc0;
 }
 
 @theme inline {
@@ -29,12 +33,20 @@
   --color-kerala-cream: var(--kerala-cream);
   --color-kerala-cream-dark: var(--kerala-cream-dark);
   --color-kerala-brown: var(--kerala-brown);
+  --color-kerala-sage: var(--kerala-sage);
+  --color-kerala-peach: var(--kerala-peach);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 }
 
 body {
-  background: var(--background);
+  /* A soft warm glow near the top of the document instead of one flat field
+     — still a plain gradient (no repeating pattern), giving every page a
+     bit of depth. Scrolls with the page (no background-attachment: fixed)
+     so it reads as "top of the page", not a viewport-locked glow. */
+  background: radial-gradient(ellipse 140% 640px at 50% 0%, var(--kerala-cream-dark) 0%, var(--kerala-cream) 70%)
+    var(--kerala-cream);
+  background-repeat: no-repeat;
   color: var(--foreground);
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
 }

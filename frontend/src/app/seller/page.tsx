@@ -163,7 +163,7 @@ export default function SellerDashboard() {
           {filtered.map((p) => (
             <li
               key={p.id}
-              className="flex flex-wrap items-center gap-4 rounded-2xl border border-kerala-yellow/30 bg-white/70 p-4 shadow-sm"
+              className="flex flex-wrap items-center gap-4 rounded-2xl border border-kerala-yellow/30 bg-white p-4 shadow-sm"
             >
               <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-kerala-cream-dark">
                 {p.primary_image ? (

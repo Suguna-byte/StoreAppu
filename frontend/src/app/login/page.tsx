@@ -44,8 +44,8 @@ function LoginForm() {
   }
 
   return (
-    <div className="mx-auto flex min-h-[70vh] max-w-md items-center px-4 py-10">
-      <div className="w-full rounded-2xl border border-kerala-yellow/30 bg-white/80 p-8 shadow-sm">
+    <div className="flex min-h-[70vh] items-center justify-center bg-kerala-sage px-4 py-10">
+      <div className="w-full max-w-md rounded-2xl border border-kerala-yellow/30 bg-white p-8 shadow-lg">
         <h1 className="font-display text-2xl font-bold text-kerala-green-dark">Welcome back</h1>
         <p className="mt-1 text-sm text-kerala-brown/70">Log in to shop and track your orders.</p>
 

@@ -15,7 +15,7 @@ const UNIT_LABELS: Record<string, string> = {
 
 export default function ProductCard({ product }: { product: ProductListItem }) {
   return (
-    <div className="group flex flex-col overflow-hidden rounded-2xl border border-kerala-yellow/30 bg-white/70 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+    <div className="group flex flex-col overflow-hidden rounded-2xl border border-kerala-yellow/30 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
       <Link href={`/products/${product.slug}`} className="relative block aspect-square bg-kerala-cream-dark">
         {product.primary_image ? (
           <Image
