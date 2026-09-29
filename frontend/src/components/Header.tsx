@@ -1,28 +1,46 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import BoatLogo from "./BoatLogo";
 import { useSession } from "@/lib/use-session";
 import { apiFetch } from "@/lib/api-client";
+import { CART_UPDATED_EVENT } from "@/lib/cart-events";
 import type { Category, Cart } from "@/types";
 
 export default function Header({ categories }: { categories: Category[] }) {
   const { user, loading, logout } = useSession();
   const [cartCount, setCartCount] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [cartBump, setCartBump] = useState(false);
+  const prevCountRef = useRef(0);
   const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
     if (!user) return;
-    apiFetch<Cart>("/cart/")
-      .then((cart) => setCartCount(cart.items.reduce((n, i) => n + i.quantity, 0)))
-      .catch(() => setCartCount(0));
+    function refreshCartCount() {
+      apiFetch<Cart>("/cart/")
+        .then((cart) => setCartCount(cart.items.reduce((n, i) => n + i.quantity, 0)))
+        .catch(() => setCartCount(0));
+    }
+    refreshCartCount();
+    window.addEventListener(CART_UPDATED_EVENT, refreshCartCount);
+    return () => window.removeEventListener(CART_UPDATED_EVENT, refreshCartCount);
   }, [user, pathname]);
 
   const displayCartCount = user ? cartCount : 0;
+
+  useEffect(() => {
+    if (displayCartCount > prevCountRef.current) {
+      setCartBump(true);
+      const timer = setTimeout(() => setCartBump(false), 400);
+      prevCountRef.current = displayCartCount;
+      return () => clearTimeout(timer);
+    }
+    prevCountRef.current = displayCartCount;
+  }, [displayCartCount]);
 
   async function handleLogout() {
     await logout();
@@ -39,7 +57,7 @@ export default function Header({ categories }: { categories: Category[] }) {
             <Link
               key={c.slug}
               href={`/category/${c.slug}`}
-              className="text-sm font-semibold text-kerala-brown transition-colors hover:text-kerala-red"
+              className="relative text-sm font-semibold text-kerala-brown transition-colors hover:text-kerala-red after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-kerala-red after:transition-all after:duration-300 hover:after:w-full"
             >
               {c.name}
             </Link>
@@ -50,7 +68,7 @@ export default function Header({ categories }: { categories: Category[] }) {
           <Link
             href="/cart"
             aria-label="Cart"
-            className="relative rounded-full p-2 text-kerala-green-dark transition-colors hover:bg-kerala-green/10"
+            className="relative rounded-full p-2 text-kerala-green-dark transition-colors hover:scale-110 hover:bg-kerala-green/10"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="9" cy="21" r="1" />
@@ -58,7 +76,11 @@ export default function Header({ categories }: { categories: Category[] }) {
               <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
             </svg>
             {displayCartCount > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-kerala-red px-1 text-[11px] font-bold text-kerala-cream">
+              <span
+                className={`absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-kerala-red px-1 text-[11px] font-bold text-kerala-cream ${
+                  cartBump ? "animate-pop" : ""
+                }`}
+              >
                 {displayCartCount}
               </span>
             )}
@@ -105,7 +127,7 @@ export default function Header({ categories }: { categories: Category[] }) {
       </div>
 
       {menuOpen && (
-        <div className="border-t border-kerala-yellow/60 bg-kerala-cream px-4 py-3 lg:hidden">
+        <div className="animate-fade-up-in border-t border-kerala-yellow/60 bg-kerala-cream px-4 py-3 lg:hidden">
           <nav className="flex flex-col gap-2">
             {categories.map((c) => (
               <Link

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import CategoryCard from "@/components/CategoryCard";
 import ProductCard from "@/components/ProductCard";
+import Reveal from "@/components/Reveal";
 import { LeafIcon, ShieldIcon, TruckIcon } from "@/components/icons/UiIcons";
 import { fetchPublic } from "@/lib/django";
 import type { Category, Paginated, ProductListItem } from "@/types";
@@ -24,7 +25,7 @@ export default async function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/10" />
 
         <div className="relative z-10 mx-auto max-w-6xl px-4">
-          <div className="max-w-lg">
+          <div className="animate-fade-up-in max-w-lg">
             <p className="mb-3 inline-block rounded-full bg-kerala-yellow/90 px-4 py-1 text-sm font-semibold text-kerala-green-dark">
               Viman Nagar, Pune
             </p>
@@ -38,13 +39,13 @@ export default async function HomePage() {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="#categories"
-                className="rounded-full bg-kerala-red px-6 py-3 font-semibold text-kerala-cream shadow transition hover:bg-kerala-red-dark"
+                className="rounded-full bg-kerala-red px-6 py-3 font-semibold text-kerala-cream shadow transition hover:-translate-y-0.5 hover:bg-kerala-red-dark hover:shadow-lg active:translate-y-0"
               >
                 Shop Now
               </Link>
               <Link
                 href="/register"
-                className="rounded-full border-2 border-kerala-cream px-6 py-3 font-semibold text-kerala-cream transition hover:bg-kerala-cream hover:text-kerala-green-dark"
+                className="rounded-full border-2 border-kerala-cream px-6 py-3 font-semibold text-kerala-cream transition hover:-translate-y-0.5 hover:bg-kerala-cream hover:text-kerala-green-dark active:translate-y-0"
               >
                 Create an account
               </Link>
@@ -63,8 +64,10 @@ export default async function HomePage() {
             <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-kerala-yellow" />
           </div>
           <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
-            {categories.map((c) => (
-              <CategoryCard key={c.slug} category={c} />
+            {categories.map((c, i) => (
+              <Reveal key={c.slug} index={i}>
+                <CategoryCard category={c} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -76,8 +79,10 @@ export default async function HomePage() {
             <h2 className="font-display text-2xl font-bold text-kerala-green-dark">Featured Products</h2>
             <p className="mt-1 text-kerala-brown/80">Fresh picks from Appu&apos;s shelves this week.</p>
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-              {featured.map((p) => (
-                <ProductCard key={p.id} product={p} />
+              {featured.map((p, i) => (
+                <Reveal key={p.id} index={i}>
+                  <ProductCard product={p} />
+                </Reveal>
               ))}
             </div>
           </div>
@@ -86,9 +91,15 @@ export default async function HomePage() {
 
       <section className="mx-auto max-w-6xl px-4 py-14">
         <div className="grid gap-6 rounded-3xl border border-kerala-yellow/40 bg-white/70 p-8 sm:grid-cols-3">
-          <Feature icon={TruckIcon} title="Local delivery" text="Fast doorstep delivery across Viman Nagar and nearby Pune." />
-          <Feature icon={ShieldIcon} title="Secure payments" text="Checkout safely with Razorpay — UPI, cards and wallets supported." />
-          <Feature icon={LeafIcon} title="Authentic Kerala" text="Sourced with care, from Malabar spices to Kasargod coconut oil." />
+          <Reveal index={0}>
+            <Feature icon={TruckIcon} title="Local delivery" text="Fast doorstep delivery across Viman Nagar and nearby Pune." />
+          </Reveal>
+          <Reveal index={1}>
+            <Feature icon={ShieldIcon} title="Secure payments" text="Checkout safely with Razorpay — UPI, cards and wallets supported." />
+          </Reveal>
+          <Reveal index={2}>
+            <Feature icon={LeafIcon} title="Authentic Kerala" text="Sourced with care, from Malabar spices to Kasargod coconut oil." />
+          </Reveal>
         </div>
       </section>
     </div>

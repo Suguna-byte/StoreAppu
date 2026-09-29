@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
+import Reveal from "@/components/Reveal";
 import { DjangoApiError, fetchPublic } from "@/lib/django";
 import type { Category, Paginated, ProductListItem } from "@/types";
 
@@ -43,13 +44,17 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="font-display text-3xl font-bold text-kerala-green-dark">{category.name}</h1>
-      {category.description && <p className="mt-2 max-w-2xl text-kerala-brown/80">{category.description}</p>}
+      <div className="animate-fade-up-in">
+        <h1 className="font-display text-3xl font-bold text-kerala-green-dark">{category.name}</h1>
+        {category.description && <p className="mt-2 max-w-2xl text-kerala-brown/80">{category.description}</p>}
+      </div>
 
       {products && products.results.length > 0 ? (
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {products.results.map((p) => (
-            <ProductCard key={p.id} product={p} />
+          {products.results.map((p, i) => (
+            <Reveal key={p.id} index={i}>
+              <ProductCard product={p} />
+            </Reveal>
           ))}
         </div>
       ) : (

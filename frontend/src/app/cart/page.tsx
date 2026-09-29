@@ -9,6 +9,7 @@ import { useSession } from "@/lib/use-session";
 import { useToast } from "@/components/ToastProvider";
 import QuantityStepper from "@/components/QuantityStepper";
 import { CloseIcon, PackageIcon } from "@/components/icons/UiIcons";
+import { emitCartUpdated } from "@/lib/cart-events";
 import type { Cart } from "@/types";
 
 export default function CartPage() {
@@ -33,6 +34,7 @@ export default function CartPage() {
         body: JSON.stringify({ quantity }),
       });
       setCart(updated);
+      emitCartUpdated();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Could not update quantity.");
     }
@@ -42,6 +44,7 @@ export default function CartPage() {
     try {
       const updated = await apiFetch<Cart>(`/cart/${itemId}/`, { method: "DELETE" });
       setCart(updated);
+      emitCartUpdated();
       toast.success("Item removed.");
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Could not remove item.");

@@ -57,6 +57,51 @@ h1, h2, h3, h4, .font-display {
   animation: toast-in 0.25s ease-out;
 }
 
+/* Hero entrance: plays automatically on load, no JS needed since it's
+   always above the fold. */
+@keyframes fade-up-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up-in {
+  animation: fade-up-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Scroll-reveal: Reveal.tsx toggles .is-visible once an element enters the
+   viewport. Respects reduced-motion by skipping straight to the end state. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Small "pop" used for success feedback (add-to-cart, cart badge bump). */
+@keyframes pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.animate-pop {
+  animation: pop 0.35s ease-out;
+}
+
 /* Scrollbar tuned to the earthy palette instead of default blue/grey */
 ::selection {
   background: var(--kerala-yellow);
