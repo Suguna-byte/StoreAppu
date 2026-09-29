@@ -1,6 +1,4 @@
 import Link from "next/link";
-import KathakaliHero from "@/components/KathakaliHero";
-import KeralaPattern from "@/components/KeralaPattern";
 import CategoryCard from "@/components/CategoryCard";
 import ProductCard from "@/components/ProductCard";
 import { fetchPublic } from "@/lib/django";
@@ -16,21 +14,23 @@ export default async function HomePage() {
 
   return (
     <div>
-      <section className="relative overflow-hidden bg-gradient-to-b from-kerala-cream-dark to-kerala-cream py-14 lg:py-20">
-        <KeralaPattern variant="leaves" />
+      <section
+        className="relative overflow-hidden bg-cover bg-center bg-no-repeat py-20 lg:min-h-[620px] lg:py-28"
+        style={{ backgroundImage: "url('/kathakali-hero.jpg')" }}
+      >
+        {/* Dark-to-transparent scrim so the text stays legible on the left
+            while the performer remains visible on the right of the photo. */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/10" />
 
-        {/* Text sits in a narrow ~30% column; the face art fills the remaining
-            ~70% of the section width and fades into the background at its
-            edges (see the mask on KathakaliHero) instead of a boxed graphic. */}
-        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-4 lg:grid-cols-[3fr_7fr]">
+        <div className="relative z-10 mx-auto max-w-6xl px-4">
           <div className="max-w-lg">
-            <p className="mb-3 inline-block rounded-full bg-kerala-yellow/30 px-4 py-1 text-sm font-semibold text-kerala-brown">
+            <p className="mb-3 inline-block rounded-full bg-kerala-yellow/90 px-4 py-1 text-sm font-semibold text-kerala-green-dark">
               Viman Nagar, Pune
             </p>
-            <h1 className="font-display text-4xl font-extrabold leading-tight text-kerala-green-dark sm:text-5xl">
+            <h1 className="font-display text-4xl font-extrabold leading-tight text-kerala-cream sm:text-5xl">
               Appu&apos;s Kerala Store
             </h1>
-            <p className="mt-4 max-w-lg text-lg text-kerala-brown/90">
+            <p className="mt-4 max-w-lg text-lg text-kerala-cream/90">
               Coconut oil, banana chips, spices, kasavu mundu and everything else that
               tastes and feels like home — delivered fresh from our store to your door.
             </p>
@@ -43,15 +43,11 @@ export default async function HomePage() {
               </Link>
               <Link
                 href="/register"
-                className="rounded-full border-2 border-kerala-green px-6 py-3 font-semibold text-kerala-green-dark transition hover:bg-kerala-green hover:text-kerala-cream"
+                className="rounded-full border-2 border-kerala-cream px-6 py-3 font-semibold text-kerala-cream transition hover:bg-kerala-cream hover:text-kerala-green-dark"
               >
                 Create an account
               </Link>
             </div>
-          </div>
-
-          <div className="animate-float-slow mx-auto w-[85%] max-w-sm lg:w-full lg:max-w-none">
-            <KathakaliHero />
           </div>
         </div>
       </section>

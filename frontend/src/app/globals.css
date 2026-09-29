@@ -57,22 +57,6 @@ h1, h2, h3, h4, .font-display {
   animation: toast-in 0.25s ease-out;
 }
 
-@keyframes iris-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-.animate-iris-spin {
-  animation: iris-spin 14s linear infinite;
-}
-
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-.animate-float-slow {
-  animation: float-slow 6s ease-in-out infinite;
-}
-
 /* Scrollbar tuned to the earthy palette instead of default blue/grey */
 ::selection {
   background: var(--kerala-yellow);
