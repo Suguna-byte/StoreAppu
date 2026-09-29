@@ -233,7 +233,9 @@ JAZZMIN_UI_TWEAKS = {
     "sidebar_nav_compact_style": False,
     "sidebar_nav_legacy_style": False,
     "sidebar_nav_flat_style": False,
-    "theme": "flatly",
+    # "litera" (unlike most Bootswatch themes) has no external Google Fonts
+    # dependency, so the admin renders identically offline / behind a firewall.
+    "theme": "litera",
     "dark_mode_theme": None,
     "button_classes": {
         "primary": "btn-success",

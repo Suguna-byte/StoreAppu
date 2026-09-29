@@ -1,6 +1,11 @@
-/* Nudges Jazzmin's Bootstrap "success" theme toward Appu's Kerala Store's
-   actual earthy palette (green/red/yellow, no neon) instead of stock
-   Bootstrap green. */
+/* Nudges Jazzmin's Bootstrap theme toward Appu's Kerala Store's actual earthy
+   palette (green/red/yellow, no neon) instead of stock Bootstrap colors.
+
+   IMPORTANT: never color `a` globally — Jazzmin's buttons (Add/Change/Delete),
+   badges and sidebar nav links are all <a> tags, and a blanket `a { color }`
+   rule silently overrides their intended (often white-on-dark) text color,
+   producing invisible text (e.g. dark-green text on a dark-green button).
+   Every link-coloring rule below is scoped to plain content links only. */
 :root {
   --kerala-green: #2f5233;
   --kerala-green-dark: #1d3620;
@@ -16,27 +21,33 @@
   border-color: var(--kerala-green) !important;
 }
 
-.sidebar-dark-success .nav-sidebar > .nav-item > .nav-link.active,
+.sidebar-dark-success .nav-sidebar > .nav-item > .nav-link.active {
+  background-color: var(--kerala-green) !important;
+}
+
 .btn-success,
 .badge-success {
   background-color: var(--kerala-green) !important;
   border-color: var(--kerala-green) !important;
+  color: #fff !important;
 }
 
 .btn-success:hover {
   background-color: var(--kerala-green-dark) !important;
   border-color: var(--kerala-green-dark) !important;
+  color: #fff !important;
 }
 
-a,
-.nav-sidebar > .nav-item > .nav-link:hover {
-  color: var(--kerala-green) !important;
+.btn-info,
+.badge-info {
+  color: #fff !important;
 }
 
 .btn-danger,
 .badge-danger {
   background-color: var(--kerala-red) !important;
   border-color: var(--kerala-red) !important;
+  color: #fff !important;
 }
 
 .btn-warning,
@@ -44,6 +55,18 @@ a,
   background-color: var(--kerala-yellow) !important;
   border-color: var(--kerala-yellow) !important;
   color: var(--kerala-green-dark) !important;
+}
+
+/* Plain text links inside the page body (breadcrumbs, list_display foreign-key
+   links, help text) — deliberately excludes .btn/.badge/.nav-link so those
+   keep their own contrasting text color. */
+.content-wrapper a:not(.btn):not(.badge):not(.nav-link),
+.breadcrumb a {
+  color: var(--kerala-green-dark);
+}
+.content-wrapper a:not(.btn):not(.badge):not(.nav-link):hover,
+.breadcrumb a:hover {
+  color: var(--kerala-red);
 }
 
 .small-box,
