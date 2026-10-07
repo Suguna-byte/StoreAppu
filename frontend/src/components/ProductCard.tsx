@@ -15,15 +15,15 @@ const UNIT_LABELS: Record<string, string> = {
 
 export default function ProductCard({ product }: { product: ProductListItem }) {
   return (
-    <div className="group flex flex-col overflow-hidden rounded-lg border border-kerala-brown/10 bg-white transition hover:border-kerala-brown/20 hover:shadow-md">
-      <Link href={`/products/${product.slug}`} className="relative block aspect-square bg-kerala-cream-dark">
+    <div className="ease-fluid group flex flex-col overflow-hidden rounded-lg border border-kerala-brown/10 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-kerala-brown/20 hover:shadow-lg">
+      <Link href={`/products/${product.slug}`} className="relative block aspect-square overflow-hidden bg-kerala-cream-dark">
         {product.primary_image ? (
           <Image
             src={product.primary_image}
             alt={product.name}
             fill
             sizes="(max-width: 768px) 50vw, 25vw"
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            className="ease-fluid object-cover transition-transform duration-700 group-hover:scale-[1.06]"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-kerala-brown/30">
@@ -41,7 +41,7 @@ export default function ProductCard({ product }: { product: ProductListItem }) {
           {product.category_name}
         </span>
         <Link href={`/products/${product.slug}`}>
-          <h3 className="font-display text-base font-semibold text-kerala-brown line-clamp-2 hover:text-kerala-red">
+          <h3 className="ease-fluid font-display text-base font-semibold text-kerala-brown line-clamp-2 transition-colors duration-300 hover:text-kerala-red">
             {product.name}
           </h3>
         </Link>

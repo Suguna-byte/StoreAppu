@@ -14,7 +14,7 @@ export default function CategoryCard({ category, large = false }: { category: Ca
   return (
     <Link
       href={`/category/${category.slug}`}
-      className="group relative block h-full min-h-[150px] overflow-hidden rounded-lg"
+      className="ease-fluid group relative block h-full min-h-[150px] overflow-hidden rounded-lg shadow-sm transition-shadow duration-500 hover:shadow-xl"
     >
       {category.image ? (
         <Image
@@ -22,10 +22,10 @@ export default function CategoryCard({ category, large = false }: { category: Ca
           alt={category.name}
           fill
           sizes={large ? "(max-width: 1024px) 100vw, 50vw" : "(max-width: 640px) 50vw, 25vw"}
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          className="ease-fluid object-cover transition-transform duration-700 group-hover:scale-[1.06]"
         />
       ) : (
-        <Illustration className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-105" />
+        <Illustration className="ease-fluid h-full w-full transition-transform duration-700 group-hover:scale-[1.06]" />
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/5 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 p-4">

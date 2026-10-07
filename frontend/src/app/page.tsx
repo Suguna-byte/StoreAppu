@@ -30,7 +30,10 @@ export default async function HomePage() {
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-kerala-yellow">
               Viman Nagar, Pune
             </p>
-            <h1 className="mt-4 font-display text-5xl font-semibold italic leading-[1.05] text-kerala-cream sm:text-6xl">
+            <h1
+              className="mt-4 font-display font-semibold italic leading-[1.05] text-kerala-cream"
+              style={{ fontSize: "clamp(2.75rem, 2rem + 3vw, 3.75rem)" }}
+            >
               A little piece
               <br />
               of Kerala,
@@ -45,13 +48,13 @@ export default async function HomePage() {
             <div className="mt-8 flex flex-wrap items-center gap-6">
               <Link
                 href="#categories"
-                className="bg-kerala-red px-7 py-3 font-semibold text-kerala-cream transition hover:bg-kerala-red-dark"
+                className="ease-fluid bg-kerala-red px-7 py-3 font-semibold text-kerala-cream transition-all duration-300 hover:-translate-y-0.5 hover:bg-kerala-red-dark hover:shadow-lg"
               >
                 Shop Now
               </Link>
               <Link
                 href="/register"
-                className="text-sm font-semibold text-kerala-cream underline decoration-kerala-yellow decoration-2 underline-offset-4 transition hover:text-kerala-yellow"
+                className="ease-fluid text-sm font-semibold text-kerala-cream underline decoration-kerala-yellow decoration-2 underline-offset-4 transition-colors duration-300 hover:text-kerala-yellow"
               >
                 Create an account
               </Link>
@@ -95,6 +98,22 @@ export default async function HomePage() {
           </div>
         </section>
       )}
+
+      <section className="bg-kerala-cream py-20">
+        <Reveal>
+          <div className="mx-auto max-w-2xl px-4 text-center">
+            <KeralaFlourish className="mx-auto h-3 w-24" />
+            <p className="mt-6 font-display text-2xl italic leading-relaxed text-kerala-brown sm:text-[28px]">
+              We started this shop so the smell of fresh banana chips and good
+              coconut oil would never feel far from home, however far Pune
+              might be from Kerala.
+            </p>
+            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.25em] text-kerala-yellow-dark">
+              Appu, Founder
+            </p>
+          </div>
+        </Reveal>
+      </section>
 
       <section className="bg-kerala-green-dark py-12 text-kerala-cream">
         <div className="mx-auto grid max-w-6xl gap-8 divide-y divide-kerala-cream/15 px-4 sm:grid-cols-3 sm:gap-6 sm:divide-x sm:divide-y-0">

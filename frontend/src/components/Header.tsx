@@ -15,9 +15,25 @@ export default function Header({ categories }: { categories: Category[] }) {
   const [cartCount, setCartCount] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [cartBump, setCartBump] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const prevCountRef = useRef(0);
   const pathname = usePathname();
   const router = useRouter();
+
+  useEffect(() => {
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 24);
+        ticking = false;
+      });
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!user) return;
@@ -50,26 +66,36 @@ export default function Header({ categories }: { categories: Category[] }) {
 
   return (
     <header className="sticky top-0 z-50 bg-kerala-cream/95 backdrop-blur-sm">
-      <div className="hidden bg-kerala-green-dark text-kerala-cream/85 sm:block">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-1.5 text-[12px]">
-          <span className="flex items-center gap-1.5">
-            <MapPinIcon className="h-3.5 w-3.5" />
-            Viman Nagar, Pune &middot; Open daily, 9am to 9pm
-          </span>
-          <span className="tracking-wide text-kerala-yellow/90">Free local delivery over &#8377;499</span>
+      <div
+        className={`hidden overflow-hidden bg-kerala-green-dark text-kerala-cream/85 transition-[grid-template-rows] duration-500 ease-fluid sm:grid ${
+          scrolled ? "sm:grid-rows-[0fr]" : "sm:grid-rows-[1fr]"
+        }`}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-1.5 text-[12px]">
+            <span className="flex items-center gap-1.5">
+              <MapPinIcon className="h-3.5 w-3.5" />
+              Viman Nagar, Pune &middot; Open daily, 9am to 9pm
+            </span>
+            <span className="tracking-wide text-kerala-yellow/90">Free local delivery over &#8377;499</span>
+          </div>
         </div>
       </div>
 
       <div className="border-b border-kerala-brown/15">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-          <BoatLogo />
+        <div
+          className={`mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 transition-[padding] duration-500 ease-fluid ${
+            scrolled ? "py-2" : "py-3"
+          }`}
+        >
+          <BoatLogo compact={scrolled} />
 
           <nav className="hidden items-center gap-7 lg:flex">
             {categories.slice(0, 6).map((c) => (
               <Link
                 key={c.slug}
                 href={`/category/${c.slug}`}
-                className="relative text-[13px] font-semibold uppercase tracking-wide text-kerala-brown transition-colors hover:text-kerala-red after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-kerala-red after:transition-all after:duration-300 hover:after:w-full"
+                className="ease-fluid relative text-[13px] font-semibold uppercase tracking-wide text-kerala-brown transition-colors duration-300 hover:text-kerala-red after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-kerala-red after:transition-all after:duration-500 after:ease-fluid hover:after:w-full"
               >
                 {c.name}
               </Link>
@@ -110,7 +136,7 @@ export default function Header({ categories }: { categories: Category[] }) {
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="border border-kerala-green-dark px-4 py-1.5 text-[13px] font-semibold uppercase tracking-wide text-kerala-green-dark transition hover:bg-kerala-green-dark hover:text-kerala-cream"
+                  className="ease-fluid border border-kerala-green-dark px-4 py-1.5 text-[13px] font-semibold uppercase tracking-wide text-kerala-green-dark transition-colors duration-300 hover:bg-kerala-green-dark hover:text-kerala-cream"
                 >
                   Logout
                 </button>
@@ -119,7 +145,7 @@ export default function Header({ categories }: { categories: Category[] }) {
               !loading && (
                 <Link
                   href="/login"
-                  className="hidden bg-kerala-red px-4 py-1.5 text-[13px] font-semibold uppercase tracking-wide text-kerala-cream transition hover:bg-kerala-red-dark sm:block"
+                  className="ease-fluid hidden bg-kerala-red px-4 py-1.5 text-[13px] font-semibold uppercase tracking-wide text-kerala-cream transition-colors duration-300 hover:bg-kerala-red-dark sm:block"
                 >
                   Login
                 </Link>

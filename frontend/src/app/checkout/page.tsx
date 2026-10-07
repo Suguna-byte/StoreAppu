@@ -113,7 +113,7 @@ export default function CheckoutPage() {
         name: rpOrder.store_name,
         description: `Order #${order.id}`,
         prefill: { name: address.full_name, contact: address.phone },
-        theme: { color: "#2f5233" },
+        theme: { color: "#244539" },
         handler: async (response: {
           razorpay_order_id: string;
           razorpay_payment_id: string;
