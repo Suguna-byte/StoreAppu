@@ -4,10 +4,12 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import BoatLogo from "./BoatLogo";
+import SearchBar from "./SearchBar";
+import CategoryIconNav from "./CategoryIconNav";
 import { useSession } from "@/lib/use-session";
 import { apiFetch } from "@/lib/api-client";
 import { CART_UPDATED_EVENT } from "@/lib/cart-events";
-import { MapPinIcon } from "@/components/icons/UiIcons";
+import { MapPinIcon, UserIcon } from "@/components/icons/UiIcons";
 import type { Category, Cart } from "@/types";
 
 export default function Header({ categories }: { categories: Category[] }) {
@@ -90,17 +92,7 @@ export default function Header({ categories }: { categories: Category[] }) {
         >
           <BoatLogo compact={scrolled} />
 
-          <nav className="hidden items-center gap-7 lg:flex">
-            {categories.slice(0, 6).map((c) => (
-              <Link
-                key={c.slug}
-                href={`/category/${c.slug}`}
-                className="ease-fluid relative text-[13px] font-semibold uppercase tracking-wide text-kerala-brown transition-colors duration-300 hover:text-kerala-red after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-kerala-red after:transition-all after:duration-500 after:ease-fluid hover:after:w-full"
-              >
-                {c.name}
-              </Link>
-            ))}
-          </nav>
+          <SearchBar className="mx-6 hidden max-w-md md:flex" />
 
           <div className="flex items-center gap-4">
             <Link
@@ -145,9 +137,11 @@ export default function Header({ categories }: { categories: Category[] }) {
               !loading && (
                 <Link
                   href="/login"
-                  className="ease-fluid hidden bg-kerala-red px-4 py-1.5 text-[13px] font-semibold uppercase tracking-wide text-kerala-cream transition-colors duration-300 hover:bg-kerala-red-dark sm:block"
+                  aria-label="Login"
+                  className="ease-fluid hidden items-center gap-1.5 text-kerala-green-dark transition-colors duration-300 hover:text-kerala-red sm:flex"
                 >
-                  Login
+                  <UserIcon className="h-6 w-6" />
+                  <span className="text-[13px] font-semibold uppercase tracking-wide">Login</span>
                 </Link>
               )
             )}
@@ -165,8 +159,13 @@ export default function Header({ categories }: { categories: Category[] }) {
         </div>
       </div>
 
+      <div className="hidden lg:block">
+        <CategoryIconNav categories={categories} />
+      </div>
+
       {menuOpen && (
         <div className="animate-fade-up-in border-t border-kerala-yellow/60 bg-kerala-cream px-4 py-3 lg:hidden">
+          <SearchBar className="mb-3" />
           <nav className="flex flex-col gap-2">
             {categories.map((c) => (
               <Link
