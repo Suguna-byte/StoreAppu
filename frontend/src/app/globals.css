@@ -22,6 +22,13 @@
      one flat field, used for alternating section backgrounds sitewide. */
   --kerala-sage: #dde4cc;
   --kerala-peach: #eed0aa;
+  /* Deepened companions to sage/peach/green, for gradient end-stops so
+     bands have intentional, documented depth instead of one-off hex
+     literals dropped inline at the point of use. */
+  --kerala-sage-dark: #c2cf9d;
+  --kerala-peach-dark: #e0b87d;
+  --kerala-green-ink: #0e2019;
+  --kerala-espresso: #3d2416;
 }
 
 html {
@@ -49,6 +56,10 @@ html {
   --color-kerala-brown: var(--kerala-brown);
   --color-kerala-sage: var(--kerala-sage);
   --color-kerala-peach: var(--kerala-peach);
+  --color-kerala-sage-dark: var(--kerala-sage-dark);
+  --color-kerala-peach-dark: var(--kerala-peach-dark);
+  --color-kerala-green-ink: var(--kerala-green-ink);
+  --color-kerala-espresso: var(--kerala-espresso);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 }
