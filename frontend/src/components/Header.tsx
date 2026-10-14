@@ -69,7 +69,7 @@ export default function Header({ categories }: { categories: Category[] }) {
   return (
     <header className="sticky top-0 z-50 bg-kerala-cream/95 backdrop-blur-sm">
       <div
-        className={`hidden overflow-hidden bg-kerala-green-dark text-kerala-cream/85 transition-[grid-template-rows] duration-500 ease-fluid sm:grid ${
+        className={`hidden overflow-hidden bg-gradient-to-r from-kerala-green-dark to-kerala-green text-kerala-cream/85 transition-[grid-template-rows] duration-500 ease-fluid sm:grid ${
           scrolled ? "sm:grid-rows-[0fr]" : "sm:grid-rows-[1fr]"
         }`}
       >

@@ -59,7 +59,7 @@ export default async function HomePage() {
                 <div className="mt-8 flex flex-wrap items-center gap-6">
                   <Link
                     href="#categories"
-                    className="ease-fluid bg-kerala-red px-7 py-3 font-semibold text-kerala-cream transition-all duration-300 hover:-translate-y-0.5 hover:bg-kerala-red-dark hover:shadow-lg"
+                    className="ease-fluid bg-gradient-to-br from-kerala-red to-kerala-red-dark px-7 py-3 font-semibold text-kerala-cream shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
                   >
                     Shop Now
                   </Link>
@@ -87,7 +87,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section id="categories" className="bg-kerala-peach py-16">
+      <section id="categories" className="bg-gradient-to-b from-kerala-peach to-[#e6bd87] py-16">
         <div className="mx-auto max-w-6xl px-4">
           <div className="flex flex-col items-start gap-1">
             <h2 className="font-display text-3xl font-semibold text-kerala-green-dark">Shop by category</h2>
@@ -107,7 +107,7 @@ export default async function HomePage() {
       </section>
 
       {featured.length > 0 && (
-        <section className="relative bg-kerala-sage py-16">
+        <section className="relative bg-gradient-to-b from-kerala-sage to-[#cdd8b4] py-16">
           <div className="mx-auto max-w-6xl px-4">
             <h2 className="font-display text-2xl font-semibold text-kerala-green-dark">Featured products</h2>
             <KeralaFlourish className="mt-1 h-3 w-24" />
@@ -140,7 +140,7 @@ export default async function HomePage() {
       )}
 
       {favorites.length >= 3 && (
-        <section className="bg-kerala-peach/60 py-16">
+        <section className="bg-gradient-to-br from-kerala-peach/70 via-kerala-cream to-kerala-sage/50 py-16">
           <div className="mx-auto max-w-6xl px-4">
             <div className="text-center">
               <h2 className="font-display text-2xl font-semibold text-kerala-green-dark">Customer favorites</h2>
@@ -169,7 +169,7 @@ export default async function HomePage() {
         </Reveal>
       </section>
 
-      <section className="bg-kerala-green-dark py-12 text-kerala-cream">
+      <section className="bg-gradient-to-r from-kerala-green-dark to-kerala-green py-12 text-kerala-cream">
         <div className="mx-auto grid max-w-6xl gap-8 divide-y divide-kerala-cream/15 px-4 sm:grid-cols-3 sm:gap-6 sm:divide-x sm:divide-y-0">
           <Reveal index={0}>
             <Feature icon={TruckIcon} title="Local delivery" text="Fast doorstep delivery across Viman Nagar and nearby Pune." />
@@ -183,7 +183,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-kerala-red py-16 text-center text-kerala-cream">
+      <section className="relative overflow-hidden bg-gradient-to-br from-kerala-red via-kerala-red-dark to-[#5c2a16] py-16 text-center text-kerala-cream">
         <div className="relative z-10 mx-auto max-w-xl px-4">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-kerala-cream/80">Only this week</p>
           <h2 className="mt-3 font-display text-3xl font-semibold italic">A different kind of grocery store.</h2>
@@ -192,7 +192,7 @@ export default async function HomePage() {
           </p>
           <Link
             href="#categories"
-            className="ease-fluid mt-6 inline-block bg-kerala-cream px-7 py-3 font-semibold text-kerala-red-dark transition-all duration-300 hover:-translate-y-0.5 hover:bg-kerala-yellow"
+            className="ease-fluid mt-6 inline-block bg-gradient-to-r from-kerala-yellow to-kerala-cream px-7 py-3 font-semibold text-kerala-red-dark shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
           >
             Shop Now
           </Link>

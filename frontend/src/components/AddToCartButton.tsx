@@ -49,7 +49,7 @@ export default function AddToCartButton({
     <button
       onClick={handleAdd}
       disabled={disabled || loading}
-      className={`ease-fluid inline-flex items-center justify-center gap-1.5 rounded-sm bg-kerala-green px-4 py-2 text-sm font-semibold text-kerala-cream transition-all duration-300 hover:bg-kerala-green-dark active:scale-95 disabled:cursor-not-allowed disabled:bg-kerala-brown/40 ${
+      className={`ease-fluid inline-flex items-center justify-center gap-1.5 rounded-sm bg-gradient-to-r from-kerala-green to-kerala-green-dark bg-[length:160%_100%] bg-left px-4 py-2 text-sm font-semibold text-kerala-cream transition-all duration-300 hover:bg-right active:scale-95 disabled:cursor-not-allowed disabled:bg-none disabled:bg-kerala-brown/40 ${
         justAdded ? "animate-pop" : ""
       } ${className}`}
     >

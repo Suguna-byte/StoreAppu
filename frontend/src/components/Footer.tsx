@@ -2,7 +2,7 @@ import KeralaFlourish from "./KeralaFlourish";
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t-4 border-kerala-yellow bg-kerala-green-dark text-kerala-cream">
+    <footer className="mt-16 border-t-4 border-kerala-yellow bg-gradient-to-b from-kerala-green-dark to-[#0f251f] text-kerala-cream">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-3">
         <div>
           <h3 className="font-display text-xl font-semibold italic text-kerala-yellow">Appu&apos;s Kerala Store</h3>
